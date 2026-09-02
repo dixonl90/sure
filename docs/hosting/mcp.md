@@ -437,3 +437,16 @@ Any AI agent that supports JSON-RPC 2.0 can connect to the MCP endpoint. The age
 - [External AI Assistant Configuration](ai.md#external-ai-assistant) - Configure Sure's chat to use an external agent
 - [Pipelock Security Proxy](pipelock.md) - Set up security scanning for MCP traffic
 - [Model Context Protocol Specification](https://modelcontextprotocol.io/) - Official MCP documentation
+
+## Rule Management Tools
+
+External MCP clients can read, create, update, delete, and preview Sure rules through the following tools. All are family-scoped and respect the authenticated user's permissions.
+
+- `list_rules` — paginated list of rules with nested conditions and actions; supports `active_only` filter.
+- `get_rule` — full detail for one rule, including the count of currently-matching transactions (`affected_resource_count`).
+- `create_rule` — create a rule from a `conditions` tree and an `actions` list. Compound conditions are supported (one level of nesting).
+- `update_rule` — patch name, active flag, effective date, or replace the full conditions/actions list.
+- `delete_rule` — remove a rule and cascade its conditions, actions, and rule runs.
+- `preview_rule` — return the count and a small sample of transactions that would match a rule (by id or by inline conditions) **without applying any actions**. Use this to verify a rule before activating it.
+
+Use `preview_rule` first whenever you are about to add a destructive action (e.g. `exclude_transaction`, `set_as_transfer_or_payment`) to a new or modified rule.

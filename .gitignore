@@ -60,6 +60,7 @@ compose-dev.yaml
 
 # Ignore asdf ruby version file
 .tool-versions
+mise.toml
 
 # Ignore GCP keyfile
 gcp-storage-keyfile.json
