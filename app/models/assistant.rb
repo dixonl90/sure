@@ -75,7 +75,13 @@ module Assistant
         Function::UpdateTransaction,
         Function::CreateTransaction,
         Function::DeleteTransaction,
-        Function::UpdateBudget
+        Function::UpdateBudget,
+        Function::ListRules,
+        Function::GetRule,
+        Function::CreateRule,
+        Function::UpdateRule,
+        Function::DeleteRule,
+        Function::PreviewRule
       ]
 
       classes += PREVIEW_FUNCTION_CLASSES if user&.preview_features_enabled?
