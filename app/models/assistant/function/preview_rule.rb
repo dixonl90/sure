@@ -96,7 +96,7 @@ class Assistant::Function::PreviewRule < Assistant::Function
     page_size = resolved_page_size(params)
     page = resolved_page(params)
     offset = (page - 1) * page_size
-    sample = scope.order(date: :desc).offset(offset).limit(page_size)
+    sample = scope.order(entries: { date: :desc }).offset(offset).limit(page_size)
 
     {
       count: count,
