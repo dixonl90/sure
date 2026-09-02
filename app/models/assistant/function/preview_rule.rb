@@ -100,7 +100,7 @@ class Assistant::Function::PreviewRule < Assistant::Function
 
     {
       count: count,
-      sample_transactions: sample.map { |t| { id: t.id, name: t.name, amount: t.amount.to_f, date: t.date&.iso8601 } },
+      sample_transactions: sample.map { |t| { id: t.id, name: t.entry.name, amount: t.entry.amount.abs.to_f, date: t.entry.date&.iso8601, currency: t.entry.currency } },
       page: page,
       page_size: page_size,
       total_pages: (count.to_f / page_size).ceil,
